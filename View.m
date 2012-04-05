@@ -67,6 +67,11 @@
 	CGContextAddPath(c, p);
 	CGContextSetLineWidth(c, 10.0);
 	CGContextSetRGBStrokeColor(c, 0.0, 0.0, 1.0, 1);
+    //Light source at upper left, shadow at lower right.
+	CGSize shadow = CGSizeMake(10, -20);
+    
+	//5 is the amount of blur.  A smaller number makes a sharper shadow.
+	CGContextSetShadow(c, shadow, 5);
 	CGContextStrokePath(c);
 	CGPathRelease(p);
 }

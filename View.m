@@ -16,11 +16,7 @@
     if (self) {
         // Initialization code
         self.backgroundColor = [UIColor whiteColor];
-        //Keep the size of the view the same,
-		//but let the center of the view be the origin.
-		CGFloat w = self.bounds.size.width;
-		CGFloat h = self.bounds.size.height;
-		self.bounds = CGRectMake(-w / 2, -h / 2, w, h);
+
     }
     return self;
 }
@@ -44,34 +40,26 @@
           self.bounds.size.height
           );
     
-    UIFont *font = [UIFont systemFontOfSize: 32];
-	[@"Origin" drawAtPoint: CGPointZero withFont: font];
+	// Drawing code
+	//Fill the Red Cross.
+	CGSize size = self.bounds.size;
+	CGFloat min = MIN(size.width, size.height);
+	CGFloat longSide = min * 15 / 16;
+	CGFloat shortSide = longSide / 3;
     
-    // Drawing code
-    // Drawing code
-    CGRect bounds = self.bounds;
-    CGFloat radius = .3 * bounds.size.width;	//in pixels
+	CGContextRef c = UIGraphicsGetCurrentContext();
+	CGContextBeginPath(c);
     
-    /*
-     Create the invisible square that will surround the circle.
-     Place the upper left corner of the square at the upper left corner of
-     the View.  bounds.origin.x and bounds.origin.y are the coordinates of
-     the upper left corner of the View.
-     */
-    CGRect r = CGRectMake(
-                          -radius,
-                          -radius,
-                          2 * radius,
-                          2 * radius
-                          );
+	CGContextTranslateCTM(c, size.width / 2, size.height / 2); //origin at center of view
+	CGContextScaleCTM(c, 1, -1);                               //make Y axis point up
     
-    CGContextRef c = UIGraphicsGetCurrentContext();
-    CGContextBeginPath(c); //unnecessary here: the path is already empty.
-    CGContextTranslateCTM(c, bounds.size.width / 2, bounds.size.height / 2);
-    CGContextScaleCTM(c, 2, 2);	//horizontal scale, vertical scale
-    CGContextAddEllipseInRect(c, r);
-    CGContextSetRGBFillColor(c, 1.0, 0.0, 0.0, 0.5);	//red, opaque
-    CGContextFillPath(c);
+	CGRect horizontal = CGRectMake(-longSide / 2, -shortSide / 2, longSide, shortSide);
+	CGRect   vertical = CGRectMake(-shortSide / 2, -longSide / 2, shortSide, longSide);
+	CGContextAddRect(c, horizontal);
+	CGContextAddRect(c, vertical);
+    
+	CGContextSetRGBFillColor(c, 1.0, 0.0, 0.0, 1.0);
+	CGContextFillPath(c);
 }
 
 

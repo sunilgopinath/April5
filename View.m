@@ -54,9 +54,9 @@
 	CGContextScaleCTM(c, 1, -1);                               //make Y axis point up
     
 	CGRect horizontal = CGRectMake(-longSide / 2, -shortSide / 2, longSide, shortSide);
-	CGRect   vertical = CGRectMake(-shortSide / 2, -longSide / 2, shortSide, longSide);
 	CGContextAddRect(c, horizontal);
-	CGContextAddRect(c, vertical);
+	CGContextRotateCTM(c, 90 * M_PI / 180);	//90 degrees clockwise
+	CGContextAddRect(c, horizontal);
     
 	CGContextSetRGBFillColor(c, 1.0, 1.0, 1.0, 1.0);
 	CGContextFillPath(c);

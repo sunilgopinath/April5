@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor yellowColor];
 
     }
     return self;
@@ -39,6 +39,12 @@
           self.bounds.size.width,
           self.bounds.size.height
           );
+    
+    UIFont *font = [UIFont systemFontOfSize:32.0];
+    NSString *string = NSLocalizedString(@"Greeting", @"displayed with drawAtPoint:");
+    CGPoint point = CGPointMake(0.0, 0.0);
+    [string drawAtPoint:point withFont:font];
+    
 	//Fill and stroke a right triangle.
 	CGSize size = self.bounds.size;
 	CGFloat min = MIN(size.width, size.height);
@@ -51,6 +57,10 @@
 	CGPathCloseSubpath(p);
     
 	CGContextRef c = UIGraphicsGetCurrentContext();
+    CGRect bounds = self.bounds;
+    CGFloat radius = .3 * bounds.size.width;	//in pixels
+    
+    
 	//Origin at right angle.
 	CGContextTranslateCTM(c,
                           (size.width + length) / 2,
@@ -58,22 +68,90 @@
                           );
 	CGContextScaleCTM(c, 1, -1);
     
-	CGContextBeginPath(c);
-	CGContextAddPath(c, p);
-	CGContextSetRGBFillColor(c, 1.0, 0.0, 0.0, 1);
-	CGContextFillPath(c);
+    CGContextSetLineWidth(c, 2.0);
+    CGColorSpaceRef colorspace = CGColorSpaceCreateDeviceRGB();
+    CGFloat components[] = {0.0, 0.0, 1.0, 1.0};
+    CGColorRef color = CGColorCreate(colorspace, components);
+    
+    // line going down from back wheel
+    CGContextMoveToPoint(c, 5, 45);
+    CGContextAddLineToPoint(c, -65, 35);
+    CGContextAddLineToPoint(c, -55, 125);
+    // line going up from back wheel
+    CGContextMoveToPoint(c, 5, 45);
+    CGContextAddLineToPoint(c, -55, 125);
+    
+    // bar across top
+    CGContextMoveToPoint(c, -55, 125);
+    CGContextAddLineToPoint(c, -125, 125);
+    
+    // bar going diagonally left from pedal
+    CGContextMoveToPoint(c, -65, 35);
+    CGContextAddLineToPoint(c, -125, 105);
+    
+    // line from front wheel
+    CGContextMoveToPoint(c, -155, 45);
+    CGContextAddLineToPoint(c, -125, 105);
+    // creating handle bar vertical bar
+    CGContextAddLineToPoint(c, -125, 145);
+    // handle bar
+    CGContextAddLineToPoint(c, -105, 145);
+    
+    // seat stem
+    CGContextMoveToPoint(c, -55, 125);
+    CGContextAddLineToPoint(c, -55, 135);
+    
+    // seat level
+    CGContextMoveToPoint(c, -65, 135);
+    CGContextAddLineToPoint(c, -45, 135);
+    
+    // top pedal stem
+    CGContextMoveToPoint(c, -65, 35);
+    CGContextAddLineToPoint(c, -65, 55);
+    
+    // top pedal
+    CGContextMoveToPoint(c, -70, 55);
+    CGContextAddLineToPoint(c, -60, 55);
+    
+    // bottom pedal stem
+    CGContextMoveToPoint(c, -65, 35);
+    CGContextAddLineToPoint(c, -65, 15);
+    
+    // top pedal
+    CGContextMoveToPoint(c, -70, 15);
+    CGContextAddLineToPoint(c, -60, 15);
+    
+    CGColorSpaceRelease(colorspace);
+    CGColorRelease(color);
+    CGContextSetShadow(c, CGSizeMake(10, -20), 5);
+    CGContextStrokePath(c);
+    
+    CGRect r = CGRectMake(
+                          -45,
+                          bounds.origin.y,
+                          radius,
+                          radius
+                          );
+    
+    CGRect r1 = CGRectMake(
+                          -200,
+                          bounds.origin.y,
+                          radius,
+                          radius
+                          );
+    
     
 	CGContextBeginPath(c);
-	CGContextAddPath(c, p);
+	//CGContextAddPath(c, p);
+    CGContextAddEllipseInRect(c, r);
+    CGContextAddEllipseInRect(c, r1);
+    
 	CGContextSetLineWidth(c, 10.0);
 	CGContextSetRGBStrokeColor(c, 0.0, 0.0, 1.0, 1);
-    //Light source at upper left, shadow at lower right.
-	CGSize shadow = CGSizeMake(10, -20);
-    
-	//5 is the amount of blur.  A smaller number makes a sharper shadow.
-	CGContextSetShadow(c, shadow, 5);
-	CGContextStrokePath(c);
+    CGContextSetShadow(c, CGSizeMake(10, -20), 5);	
+    CGContextStrokePath(c);
 	CGPathRelease(p);
+    
 }
 
 

@@ -25,6 +25,20 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    NSLog(@"self.frame == (%g, %g), %g × %g",
+          self.frame.origin.x,
+          self.frame.origin.y,
+          self.frame.size.width,
+          self.frame.size.height
+          );
+    
+	NSLog(@"self.bounds == (%g, %g), %g × %g",
+          self.bounds.origin.x,
+          self.bounds.origin.y,
+          self.bounds.size.width,
+          self.bounds.size.height
+          );
+    
     // Drawing code
     // Drawing code
     CGRect bounds = self.bounds;
@@ -37,8 +51,8 @@
      the upper left corner of the View.
      */
     CGRect r = CGRectMake(
-                          bounds.origin.x,
-                          bounds.origin.y,
+                          bounds.origin.x + bounds.size.width / 2 - radius,
+                          bounds.origin.y + bounds.size.height / 2 - radius,
                           2 * radius,
                           2 * radius
                           );

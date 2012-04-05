@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor redColor];
 
     }
     return self;
@@ -58,7 +58,7 @@
 	CGContextAddRect(c, horizontal);
 	CGContextAddRect(c, vertical);
     
-	CGContextSetRGBFillColor(c, 1.0, 0.0, 0.0, 1.0);
+	CGContextSetRGBFillColor(c, 1.0, 1.0, 1.0, 1.0);
 	CGContextFillPath(c);
 }
 

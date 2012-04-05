@@ -16,6 +16,11 @@
     if (self) {
         // Initialization code
         self.backgroundColor = [UIColor whiteColor];
+        //Keep the size of the view the same,
+		//but let the center of the view be the origin.
+		CGFloat w = self.bounds.size.width;
+		CGFloat h = self.bounds.size.height;
+		self.bounds = CGRectMake(-w / 2, -h / 2, w, h);
     }
     return self;
 }
@@ -39,6 +44,9 @@
           self.bounds.size.height
           );
     
+    UIFont *font = [UIFont systemFontOfSize: 32];
+	[@"Origin" drawAtPoint: CGPointZero withFont: font];
+    
     // Drawing code
     // Drawing code
     CGRect bounds = self.bounds;
@@ -51,8 +59,8 @@
      the upper left corner of the View.
      */
     CGRect r = CGRectMake(
-                          bounds.origin.x + bounds.size.width / 2 - radius,
-                          bounds.origin.y + bounds.size.height / 2 - radius,
+                          -radius,
+                          -radius,
                           2 * radius,
                           2 * radius
                           );

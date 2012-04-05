@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F89B7F4152E66DA00BDB319 /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 0F89B7F3152E66DA00BDB319 /* warning.png */; };
 		0FCEA4CD152DBB2D000CFF5F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCEA4CC152DBB2D000CFF5F /* UIKit.framework */; };
 		0FCEA4CF152DBB2D000CFF5F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCEA4CE152DBB2D000CFF5F /* Foundation.framework */; };
 		0FCEA4D1152DBB2D000CFF5F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCEA4D0152DBB2D000CFF5F /* CoreGraphics.framework */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F89B7F3152E66DA00BDB319 /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = warning.png; path = ../warning.png; sourceTree = "<group>"; };
 		0FCEA4C8152DBB2D000CFF5F /* April5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = April5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FCEA4CC152DBB2D000CFF5F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0FCEA4CE152DBB2D000CFF5F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -87,6 +89,7 @@
 		0FCEA4D3152DBB2D000CFF5F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0F89B7F3152E66DA00BDB319 /* warning.png */,
 				0FCEA4D4152DBB2D000CFF5F /* April5-Info.plist */,
 				0FCEA4D5152DBB2D000CFF5F /* InfoPlist.strings */,
 				0FCEA4D8152DBB2D000CFF5F /* main.m */,
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FCEA4D7152DBB2D000CFF5F /* InfoPlist.strings in Resources */,
+				0F89B7F4152E66DA00BDB319 /* warning.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

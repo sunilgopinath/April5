@@ -39,7 +39,6 @@
           self.bounds.size.width,
           self.bounds.size.height
           );
-    
 	// Drawing code
 	//Fill the Red Cross.
 	CGSize size = self.bounds.size;
@@ -55,7 +54,12 @@
     
 	CGRect horizontal = CGRectMake(-longSide / 2, -shortSide / 2, longSide, shortSide);
 	CGContextAddRect(c, horizontal);
-	CGContextRotateCTM(c, 90 * M_PI / 180);	//90 degrees clockwise
+    
+	CGContextSetRGBFillColor(c, 1.0, 1.0, 1.0, 1.0);
+	CGContextFillPath(c);
+    
+	CGContextBeginPath(c);
+	CGContextRotateCTM(c, M_PI / 2);	//90 degrees clockwise
 	CGContextAddRect(c, horizontal);
     
 	CGContextSetRGBFillColor(c, 1.0, 1.0, 1.0, 1.0);

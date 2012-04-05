@@ -60,6 +60,8 @@
     
 	CGContextBeginPath(c);
 	CGContextRotateCTM(c, M_PI / 2);	//90 degrees clockwise
+    //Rotation of 15°, negative for counterclockwise.
+	CGContextRotateCTM(c, -15.0 * M_PI / 180.0);
 	CGContextAddRect(c, horizontal);
     
 	CGContextSetRGBFillColor(c, 1.0, 1.0, 1.0, 1.0);

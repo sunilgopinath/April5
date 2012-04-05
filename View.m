@@ -39,14 +39,19 @@
           self.bounds.size.width,
           self.bounds.size.height
           );
-	//Fill a right triangle.
+	//Fill and stroke a right triangle.
 	CGSize size = self.bounds.size;
 	CGFloat min = MIN(size.width, size.height);
 	CGFloat length = min * 5 / 8;           //of side
     
-	CGContextRef c = UIGraphicsGetCurrentContext();
+	CGMutablePathRef p = CGPathCreateMutable();   //right triangle
+	CGPathMoveToPoint(p, NULL, 0, 0);          //lower right vertex (the right angle)
+	CGPathAddLineToPoint(p, NULL, 0, length);  //upper right vertex
+	CGPathAddLineToPoint(p, NULL, -length, 0); //lower left vertex
+	CGPathCloseSubpath(p);
     
-	//origin at right angle
+	CGContextRef c = UIGraphicsGetCurrentContext();
+	//Origin at right angle.
 	CGContextTranslateCTM(c,
                           (size.width + length) / 2,
                           (size.height + length) / 2
@@ -54,13 +59,16 @@
 	CGContextScaleCTM(c, 1, -1);
     
 	CGContextBeginPath(c);
-	CGContextMoveToPoint(c, 0, 0);          //lower right vertex (the right angle)
-	CGContextAddLineToPoint(c, 0, length);  //upper right vertex
-	CGContextAddLineToPoint(c, -length, 0); //lower left vertex
-	CGContextClosePath(c);                  //back to starting point
-    
-	CGContextSetRGBFillColor(c, 1.0, 0.0, 0.0, 1.0);
+	CGContextAddPath(c, p);
+	CGContextSetRGBFillColor(c, 1.0, 0.0, 0.0, 1);
 	CGContextFillPath(c);
+    
+	CGContextBeginPath(c);
+	CGContextAddPath(c, p);
+	CGContextSetLineWidth(c, 10.0);
+	CGContextSetRGBStrokeColor(c, 0.0, 0.0, 1.0, 1);
+	CGContextStrokePath(c);
+	CGPathRelease(p);
 }
 
 

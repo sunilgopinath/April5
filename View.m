@@ -67,8 +67,9 @@
     
     CGContextRef c = UIGraphicsGetCurrentContext();
     CGContextBeginPath(c); //unnecessary here: the path is already empty.
+    CGContextTranslateCTM(c, bounds.size.width / 2, bounds.size.height / 2);
     CGContextAddEllipseInRect(c, r);
-    CGContextSetRGBFillColor(c, 1.0, 0.0, 0.0, 1.0);	//red, opaque
+    CGContextSetRGBFillColor(c, 1.0, 0.0, 0.0, 0.5);	//red, opaque
     CGContextFillPath(c);
 }
 

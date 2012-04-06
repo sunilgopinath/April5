@@ -40,7 +40,7 @@
           self.bounds.size.height
           );
     
-    UIFont *font = [UIFont systemFontOfSize:32.0];
+    UIFont *font = [UIFont systemFontOfSize:16.0];
     NSString *string = NSLocalizedString(@"Greeting", @"displayed with drawAtPoint:");
     CGPoint point = CGPointMake(0.0, 0.0);
     [string drawAtPoint:point withFont:font];

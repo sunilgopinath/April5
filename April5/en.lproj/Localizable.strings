@@ -1,0 +1,2 @@
+/* Localized versions of Info.plist keys */
+"Greeting" = "Watch out! Cyclist coming through";	/* Don't forget the semicolon. */

@@ -57,5 +57,7 @@
 			<string>UINewsstandBindingEdgeLeft</string>
 		</dict>
 	</dict>
+	<key>UIStatusBarHidden</key>
+	<true/>
 </dict>
 </plist>
